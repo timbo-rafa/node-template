@@ -16,7 +16,7 @@
   "license": "ISC",
   "homepage": "https://github.com/timbo-rafa/node-template#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "helmet": "^3.22.0",
     "morgan": "^1.10.0",
     "nconf": "^0.10.0",
