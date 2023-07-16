@@ -1,8 +1,9 @@
 import express from 'express'
 import helmet from 'helmet'
 import morganLogger from 'morgan'
-import nconf from './nconf.js'
+import nconf from './nconf'
 import bodyParser from 'body-parser'
+import appRoute from './app/app'
 
 const app = express()
 
@@ -24,7 +25,7 @@ app.use(function (request, response, next) {
                         'https://rtimbo.com',
                         'https://timbo-rafa.github.io']
 
-  if (allowedOrigins.indexOf(origin) > -1) {
+  if (origin && allowedOrigins.indexOf(origin) > -1) {
     response.header('Access-Control-Allow-Origin',	origin)
   }
 
@@ -39,7 +40,6 @@ app.use(function (request, response, next) {
   next()
 })
 
-import appRoute from './app/app.js'
 app.use('/app', appRoute)
 
 // server ping (last route)
