@@ -53,14 +53,8 @@ app.get('/', function pingSuccess (req, res, next) {
 app.use(function handleErrors (error: Error, request: Request, response: Response, next: NextFunction) {
   'use strict'
 
-  console.error('handleErrors:',error)
-  if(error) {
-    console.error('error.message', error.message)
-    return response.status(400).send({ error: error })
-  }
-  console.error(error.stack)
-  response.status(500).end()
-  return process.exit()
+  console.error('Error middleware caught an error:',error)
+  return response.status(400).send({ error: error })
 })
 
 app.listen(nconf.get('PORT'), function () {

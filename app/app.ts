@@ -2,7 +2,7 @@ import Router from 'express'
 const app = Router()
 
 app.route('/error').get(function (req, res, next) {
-  return res.status(500).end();
+  throw new Error('Oops!');
 })
 
 app.route('/param/:parameter').get(function (req, res, next) {
