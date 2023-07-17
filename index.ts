@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { NextFunction, Response, Request } from 'express'
 import helmet from 'helmet'
 import morganLogger from 'morgan'
 import nconf from './nconf'
@@ -50,7 +50,7 @@ app.get('/', function pingSuccess (req, res, next) {
   res.status(200).send({})
 })
 
-app.use(function handleErrors (error, request, response, next) {
+app.use(function handleErrors (error: Error, request: Request, response: Response, next: NextFunction) {
   'use strict'
 
   console.error('handleErrors:',error)
